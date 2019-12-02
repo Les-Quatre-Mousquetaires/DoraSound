@@ -38,12 +38,6 @@ export class SideMenuComponent extends Component {
                     <div className="ms_nav_wrapper">
                         <ul>
                             <li>
-                                {/*<a href="index-2.html" className="active" title="Discover">*/}
-                                {/*    <span className="nav_icon">*/}
-                                {/*        <span className="icon icon_discover"/>*/}
-                                {/*    </span>*/}
-                                {/*    <span className="nav_text">discover</span>*/}
-                                {/*</a>*/}
                                 <Link to="/" className="active" title="Discover">
                                     <span className="nav_icon">
                                         <span className="icon icon_discover"/>
@@ -52,12 +46,12 @@ export class SideMenuComponent extends Component {
                                 </Link>
                             </li>
                             <li>
-                                <a href="album.html" title="Albums">
+                                <Link to="/albums" title="Albums">
                                 <span className="nav_icon">
                                   <span className="icon icon_albums"/>
                                 </span>
                                     <span className="nav_text">albums</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <a href="artist.html" title="Artists">
