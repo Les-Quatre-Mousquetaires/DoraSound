@@ -5,17 +5,20 @@ import RegisterComponent from "./components/AuthPage/registerComponent";
 import ClearComponent from "./components/UtilsComponents/clearComponent";
 import SaveComponent from "./components/UtilsComponents/saveComponent";
 import LanguageComponent from "./components/UtilsComponents/languageComponent";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     return (
-        <div>
-            <LoaderComponent/>
-            <MasterComponent/>
-            <RegisterComponent/>
-            <LanguageComponent/>
-            <ClearComponent/>
-            <SaveComponent/>
-        </div>
+        <BrowserRouter>
+            <div>
+                <LoaderComponent/>
+                <MasterComponent/>
+                <RegisterComponent/>
+                <LanguageComponent/>
+                <ClearComponent/>
+                <SaveComponent/>
+            </div>
+        </BrowserRouter>
 
     );
 }

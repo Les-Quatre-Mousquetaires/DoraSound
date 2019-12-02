@@ -3,11 +3,12 @@
  * Email: tranphuquy19@gmail.com
  */
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
 export class SideMenuComponent extends Component {
-    sideItems = [
+    sideItems1 = [
         {
-            to: '',
+            to: '/',
             className: 'active',
             navIcon: '',
             navText: ''
@@ -37,12 +38,18 @@ export class SideMenuComponent extends Component {
                     <div className="ms_nav_wrapper">
                         <ul>
                             <li>
-                                <a href="index-2.html" className="active" title="Discover">
+                                {/*<a href="index-2.html" className="active" title="Discover">*/}
+                                {/*    <span className="nav_icon">*/}
+                                {/*        <span className="icon icon_discover"/>*/}
+                                {/*    </span>*/}
+                                {/*    <span className="nav_text">discover</span>*/}
+                                {/*</a>*/}
+                                <Link to="/" className="active" title="Discover">
                                     <span className="nav_icon">
                                         <span className="icon icon_discover"/>
                                     </span>
                                     <span className="nav_text">discover</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <a href="album.html" title="Albums">

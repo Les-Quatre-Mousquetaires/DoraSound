@@ -3,14 +3,14 @@
  * Email: tranphuquy19@gmail.com
  */
 import React, {Component} from "react";
-import {HeaderComponent} from "../UtilsComponents/headerComponent";
 import HomeComponent from "../HomePage/homeComponent";
+import routerRendering from "../../commons/routerRendering";
+import homeContentRoutes from "../../routers/homeContentRoutes";
 
 export class ContentPage extends Component {
     render() {
         return <div className="ms_content_wrapper padder_top80">
-            <HeaderComponent/>
-            <HomeComponent/>
+            {routerRendering(homeContentRoutes, true)}
         </div>;
     }
 }
