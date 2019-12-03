@@ -38,6 +38,8 @@ class AlbumSliderComponent extends Component {
         return <div className="ms_heading">
             <h1>Recently Played</h1>
             <span className="veiw_all"><a href="#">view more</a></span>
+            <br/>
+            <br/>
             <Swiper {...this.params}>
                     {ttt}
             </Swiper>
