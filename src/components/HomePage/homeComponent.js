@@ -15,7 +15,7 @@ class HomeComponent extends Component {
         return (
             <div>
                 <BannerComponent/>
-                {/*<AlbumSliderComponent/>*/}
+                <AlbumSliderComponent/>
                 <WeeklyTopComponent/>
                 {/*<ArtistSliderComponent/>*/}
                 <ReleaseSong/>
