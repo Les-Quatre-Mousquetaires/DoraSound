@@ -11,18 +11,26 @@ import ElementOfSliderComponent from "./elementOfSliderComponent";
 class AlbumSliderComponent extends Component {
 
     params = {
-        slidesPerView: 5,
-        spaceBetween: 30,
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true
+        },
         pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
+            el: '.swiper-pagination'
         }
     };
     render() {
         let arr = [1,2,3,4,5,6,7,8,9,10,11];
         let ttt = arr.map((item,index)=>{
             return(
-                <div key={index}>
+                <div key={index} className="col-lg-3 col-md-4 col-xs-4">
                     <ElementOfSliderComponent/>
                 </div>
             );
@@ -32,7 +40,6 @@ class AlbumSliderComponent extends Component {
             <span className="veiw_all"><a href="#">view more</a></span>
             <Swiper {...this.params}>
                     {ttt}
-
             </Swiper>
         </div>;
     }
