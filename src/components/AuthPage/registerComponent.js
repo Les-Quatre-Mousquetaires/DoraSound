@@ -6,6 +6,9 @@ import React, {Component} from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 class RegisterComponent extends Component {
+    componentClicked = ()=>{
+        //do anythings
+    }
     responseFacebook = (res) => {
         console.log(res);
     }
@@ -94,6 +97,7 @@ class RegisterComponent extends Component {
                                             autoLoad={true}
                                             fields="name,email,picture"
                                             callback={this.responseFacebook}
+                                            onClick={this.componentClicked}
                                             render={renderProps=>(
                                                 <a className="ms_btn" style={{marginLeft: "2em", color: "white"}} onClick={renderProps.onClick}>Đăng nhập với Facebook</a>
                                             )}
