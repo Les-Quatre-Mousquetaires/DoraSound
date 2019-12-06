@@ -1,6 +1,14 @@
-import {USER_LOGIN_FACEBOOK} from "../../commons/types";
+import {USER_LOGIN_FACEBOOK, USER_LOGIN_PASS, USER_LOGOUT} from "../../commons/types";
 import apiCaller from "../../commons/apiCaller";
 import User from "../models/UserModel";
+
+const NormalLogin = (user) => {
+    return async dispatch => {
+        const response = await apiCaller('auth/login', 'POST', user);
+        response ? storedUser(response.data) : storedUser(User);
+        dispatch({type: USER_LOGIN_PASS, payload: response})
+    }
+}
 
 const LoginWithFB = (fbToken) => {
     return async dispatch => {
@@ -11,10 +19,19 @@ const LoginWithFB = (fbToken) => {
     }
 }
 
+const logout = () => {
+    return async dispatch => {
+        localStorage.setItem('user', JSON.stringify(User));
+        dispatch({type: USER_LOGOUT});
+    }
+}
+
 let storedUser = (user) => {
     localStorage.setItem("user", JSON.stringify(user));
 }
 
 export {
-    LoginWithFB
+    NormalLogin,
+    LoginWithFB,
+    logout
 }

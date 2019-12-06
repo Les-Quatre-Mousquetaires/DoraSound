@@ -4,7 +4,7 @@
  */
 import React, {Component} from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import { LoginWithFB } from '../../redux/actions/authAction';
+import { LoginWithFB, NormalLogin } from '../../redux/actions/authAction';
 import { connect } from 'react-redux';
 
 
@@ -16,22 +16,52 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        loginUser: (token) => {
+        loginUserFB: (token) => {
             dispatch(LoginWithFB(token));
+        },
+        loginUser: (user) => {
+            dispatch(NormalLogin(user));
         }
     }
 };
 
 class RegisterComponent extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
+
+    onChange = (event) => {
+        let {name, value} = event.target;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    onSubmit = async (event) => {
+        event.preventDefault();
+        let {email, password} = this.state;
+        let user = {
+            email, password
+        };
+        let {loginUser} = this.props;
+        loginUser(user);
+    };
+
     componentClicked = ()=>{
         //do anythings
     }
     responseFacebook = (res) => {
 
-        let {loginUser} = this.props;
-        loginUser(res.accessToken);
+        let {loginUserFB} = this.props;
+        loginUserFB(res.accessToken);
         console.log(res.accessToken);
     }
+
     render() {
         return (
             <div className="ms_register_popup">
@@ -54,13 +84,17 @@ class RegisterComponent extends Component {
               </span>
                                     </div>
                                     <div className="form-group">
-                                        <input type="text" placeholder="Enter Your Email" className="form-control"/>
+                                        <input type="text" placeholder="Enter Your Email" name="email"
+                                         className="form-control"
+                                         onChange={this.onChange}/>
                                         <span className="form_icon">
                 <i className="fa_icon form-envelope" aria-hidden="true"/>
               </span>
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" placeholder="Enter Password" className="form-control"/>
+                                        <input type="password" placeholder="Enter Password" name="password" 
+                                        className="form-control"
+                                        onChange={this.onChange}/>
                                         <span className="form_icon">
                 <i className="fa_icon form-lock" aria-hidden="true"/>
               </span>
@@ -93,13 +127,13 @@ class RegisterComponent extends Component {
                                 <div className="ms_register_form">
                                     <h2>login / Sign in</h2>
                                     <div className="form-group">
-                                        <input type="text" placeholder="Enter Your Email" className="form-control"/>
+                                        <input type="text" placeholder="Enter Your Email" className="form-control" name="email" onChange={this.onChange}/>
                                         <span className="form_icon">
                 <i className="fa_icon form-envelope" aria-hidden="true"/>
               </span>
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" placeholder="Enter Password" className="form-control"/>
+                                        <input type="password" placeholder="Enter Password" className="form-control"  name="password" onChange={this.onChange}/>
                                         <span className="form_icon">
                 <i className="fa_icon form-lock" aria-hidden="true"/>
               </span>
@@ -110,7 +144,7 @@ class RegisterComponent extends Component {
                                             <span className="checkmark"/>
                                         </label>
                                     </div>
-                                    <a href="profile.html" className="ms_btn">login now</a>
+                                    <a href="profile.html" className="ms_btn" onClick={this.onSubmit}>login now</a>
 
                                         <FacebookLogin
                                             appId="483388002507299"

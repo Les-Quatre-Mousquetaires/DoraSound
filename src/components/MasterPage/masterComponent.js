@@ -7,7 +7,7 @@ import PlayerComponent from "../UtilsComponents/playerComponent";
 import {SideMenuComponent} from "../SideMenuComponent/sideMenuComponent";
 import ContentPage from "../ContentPage/contentPage";
 import {FooterComponent} from "../FooterComponent/footerComponent";
-import {HeaderComponent} from "../UtilsComponents/headerComponent";
+import HeaderComponent from "../UtilsComponents/headerComponent";
 
 class MasterComponent extends Component {
     render() {

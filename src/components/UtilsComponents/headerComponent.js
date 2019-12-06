@@ -3,8 +3,16 @@
  * Email: tranphuquy19@gmail.com
  */
 import React, {Component} from "react";
+import { connect } from "react-redux";
+import {logout} from "../../redux/actions/authAction";
 
-export class HeaderComponent extends Component {
+
+
+class HeaderComponent extends Component {
+    onclick = () => {
+        let {logoutUser} = this.props;
+        logoutUser();
+    }
     render() {
         return <div className="ms_header">
             <div className="ms_top_left">
@@ -25,12 +33,30 @@ export class HeaderComponent extends Component {
                                                                                                alt=""/></span>
                 </div>
                 <div className="ms_top_btn">
-                    <a href="#" className="ms_btn reg_btn" data-toggle="modal"
+                    {!this.props.user || !this.props.user.token ? 
+                    <span><a href="#" className="ms_btn reg_btn" data-toggle="modal"
                        data-target="#myModal"><span>register</span></a>
                     <a href="#" className="ms_btn login_btn" data-toggle="modal"
-                       data-target="#myModal1"><span>login</span></a>
+                       data-target="#myModal1"><span>login</span></a></span> :
+
+                    <a href="#" className="ms_btn login_btn" onClick={this.onclick}><span>logout</span></a>
+                    }
                 </div>
             </div>
         </div>;
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        user: state.authReducer
+    };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        logoutUser: () => {
+            dispatch(logout());
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
