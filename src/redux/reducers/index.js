@@ -5,9 +5,9 @@
 
 import {combineReducers} from "redux";
 import authReducer from "./authReducer";
-
+import songsReducer from "./songsReducer";
 const masterReducer  = combineReducers({
- authReducer
+ authReducer, songsReducer
 });
 
 export default masterReducer;

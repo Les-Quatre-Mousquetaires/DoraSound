@@ -13,6 +13,8 @@ const USER_LOGIN_QR_CODE = 'USER_LOGIN_QR_CODE';
 
 const USER_REGISTER = 'USER_REGISTER';
 
+const SONGS_GET_ALL = "songs_get_all";
+
 
 export {
     USER_LOGIN_PASS,
@@ -20,5 +22,7 @@ export {
     USER_LOGIN_GOOGLE,
     USER_LOGIN_QR_CODE,
 
-    USER_REGISTER
+    USER_REGISTER,
+
+    SONGS_GET_ALL
 }
