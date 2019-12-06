@@ -30,7 +30,7 @@ class AlbumSliderComponent extends Component {
         let arr = [1,2,3,4,5,6,7,8,9,10,11];
         let ttt = arr.map((item,index)=>{
             return(
-                <div key={index} className="col-lg-3 col-md-4 col-xs-4">
+                <div key={index} className="col-lg-3 col-md-6 col-xs-6">
                     <ElementOfSliderComponent/>
                 </div>
             );
