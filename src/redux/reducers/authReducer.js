@@ -22,7 +22,8 @@ let authReducer = (state = userInitState, action) => {
         case USER_LOGIN_GOOGLE:
             return state;
         case USER_LOGIN_FACEBOOK:
-            return state;
+            let user = {...action.payload.data};
+            return user;
         case USER_LOGIN_QR_CODE:
             return state;
         case USER_REGISTER:

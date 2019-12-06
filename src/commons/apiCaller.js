@@ -4,15 +4,15 @@
  */
 
 import axios from "axios";
-import config from "./configs";
-import headerHeper from "./HeaderHelper";
+import config from "./config";
+import headerHelper from "./headerHelper";
 
 let apiCaller = (endpoint, method = 'GET', body) => {
     return axios({
         method: method,
         url: `${config.API_URL}/${endpoint}`,
         data: body,
-        headers: headerHeper()
+        headers: headerHelper()
     });
 };
 

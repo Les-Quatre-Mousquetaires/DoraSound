@@ -7,11 +7,11 @@ function getToken() {
     return token;
 }
 
-function headerHeper() {
+function headerHelper() {
     return {
         'Authorization': getToken(),
         'Content-Type': 'application/json'
     }
 };
 
-export default headerHeper;
+export default headerHelper;

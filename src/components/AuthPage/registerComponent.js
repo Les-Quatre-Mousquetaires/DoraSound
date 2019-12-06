@@ -4,13 +4,33 @@
  */
 import React, {Component} from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import { LoginWithFB } from '../../redux/actions/authAction';
+import { connect } from 'react-redux';
+
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.authReducer
+    };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        loginUser: (token) => {
+            dispatch(LoginWithFB(token));
+        }
+    }
+};
 
 class RegisterComponent extends Component {
     componentClicked = ()=>{
         //do anythings
     }
     responseFacebook = (res) => {
-        console.log(res);
+
+        let {loginUser} = this.props;
+        loginUser(res.accessToken);
+        console.log(res.accessToken);
     }
     render() {
         return (
@@ -115,4 +135,4 @@ class RegisterComponent extends Component {
     }
 }
 
-export default RegisterComponent;
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterComponent);
