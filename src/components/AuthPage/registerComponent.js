@@ -94,7 +94,7 @@ class RegisterComponent extends Component {
 
                                         <FacebookLogin
                                             appId="483388002507299"
-                                            autoLoad={true}
+                                            autoLoad={false}
                                             fields="name,email,picture"
                                             callback={this.responseFacebook}
                                             onClick={this.componentClicked}
