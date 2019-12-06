@@ -3,8 +3,15 @@
  * Email: tranphuquy19@gmail.com
  */
 import React, {Component} from 'react';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
 class RegisterComponent extends Component {
+    componentClicked = ()=>{
+        //do anythings
+    }
+    responseFacebook = (res) => {
+        console.log(res);
+    }
     render() {
         return (
             <div className="ms_register_popup">
@@ -83,13 +90,20 @@ class RegisterComponent extends Component {
                                             <span className="checkmark"/>
                                         </label>
                                     </div>
-                                    <a href="profile.html" className="ms_btn" target="_blank">login now</a>
-                                    <div className="popup_forgot">
-                                        <a href="#">Forgot Password ?</a>
-                                    </div>
-                                    <p>Don't Have An Account? <a href="#myModal" data-toggle="modal"
-                                                                 className="ms_modal1 hideCurrentModel">register
-                                        here</a></p>
+                                    <a href="profile.html" className="ms_btn">login now</a>
+
+                                        <FacebookLogin
+                                            appId="483388002507299"
+                                            autoLoad={true}
+                                            fields="name,email,picture"
+                                            callback={this.responseFacebook}
+                                            onClick={this.componentClicked}
+                                            render={renderProps=>(
+                                                <a className="ms_btn" style={{marginLeft: "2em", color: "white"}} onClick={renderProps.onClick}>Đăng nhập với Facebook</a>
+                                            )}
+                                            // icon="fa-facebook"
+                                        />
+
                                 </div>
                             </div>
                         </div>
