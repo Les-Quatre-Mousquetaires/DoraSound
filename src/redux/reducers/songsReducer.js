@@ -8,6 +8,7 @@ let songInitState = Song;
 let songsReducer = (state=songInitState,action )=>{
     switch (action.type) {
         case SONGS_GET_ALL:
+            console.log("REDUCER");
             return action.payload.data;
         default:
             return state;

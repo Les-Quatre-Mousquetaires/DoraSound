@@ -6,10 +6,18 @@ import React, {Component} from "react";
 import 'swiper/css/swiper.css';
 import Swiper from 'react-id-swiper';
 import ElementOfSliderComponent from "./elementOfSliderComponent";
+import {connect} from "react-redux";
+import {Get_All} from "../../redux/actions/songsAction";
 
 
 class AlbumSliderComponent extends Component {
 
+    constructor(props){
+        super(props);
+
+        let {getAllSongs} = this.props;
+        getAllSongs();
+    }
     params = {
         effect: 'coverflow',
         grabCursor: true,
@@ -27,6 +35,7 @@ class AlbumSliderComponent extends Component {
         }
     };
     render() {
+        console.log(this.props);
         let arr = [1,2,3,4,5,6,7,8,9,10,11];
         let ttt = arr.map((item,index)=>{
             return(
@@ -46,5 +55,18 @@ class AlbumSliderComponent extends Component {
         </div>;
     }
 }
-
-export default AlbumSliderComponent;
+const  mapStateToProps = (state) =>{
+    return{
+        songs:state.songsReducer
+    }
+};
+const mapDispatchToProps=(dispatch, props)=>{
+    return {
+        getAllSongs: ()=>{
+            dispatch(
+                Get_All()
+            );
+        }
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(AlbumSliderComponent);
